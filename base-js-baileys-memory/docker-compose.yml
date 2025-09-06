@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  wapp-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3008:3008"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - PORT=3008
+    command: ["npm", "start"]
+
+
+# ⚠️ Si hacés cambios en dependencias (package.json, pnpm-lock.yaml), vas a tener que usar --build. 
+# Pero si sólo cambiás tu código fuente (.js, .ts, etc.), no hace falta.

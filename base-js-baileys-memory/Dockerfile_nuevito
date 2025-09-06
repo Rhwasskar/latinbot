@@ -1,0 +1,20 @@
+# Imagen base oficial de Node.js con Alpine (ligero y compatible con sharp)
+FROM node:18-alpine
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia los archivos de tu proyecto (excepto node_modules)
+COPY package*.json ./
+
+# Instala las dependencias
+RUN npm install
+
+# Copia el resto de los archivos del proyecto
+COPY . .
+
+# Expone el puerto que use tu bot, si aplica (opcional)
+# EXPOSE 3008
+
+# Comando para iniciar tu bot
+CMD ["node", "app.js"]
